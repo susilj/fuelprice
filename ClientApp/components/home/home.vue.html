@@ -1,0 +1,55 @@
+<!-- <template>
+    <b-container class="items">
+        <b-row>
+          <b-col>
+            <h1>{{ appTitle }}</h1>
+            <b-table striped hover :items="myProvider" :busy.sync="isBusy"></b-table>
+          </b-col>
+        </b-row>
+    </b-container>
+</template> -->
+<template>
+    <div class="hello">
+        <h2>Fuel price</h2>
+        <table v-if="fuel.length" class="table">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Company(C)</th>
+                    <th>Effective Date</th>
+                    <th>Fuel type &amp; price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in fuel">
+                    <td>{{ item.city }}</td>
+                    <td>{{ item.company }}</td>
+                    <td>{{ item.effectiveDate }}</td>
+                    <td>
+                        <ul class="list-group">
+                            <li v-for="ft in item.fuelType" class="list-group-item d-flex justify-content-between align-items-center">
+                              {{ ft.type }}
+                              <span class="badge badge-primary badge-pill">{{ ft.price }}</span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p v-else><em>Loading...</em></p>
+          
+          
+        <!-- <b-table striped hover v-if="fuel.length" :items="fuel"> -->
+            <!-- <template slot="fuelTypeWithPrice" slot-scope="data">
+                <b-list-group v-for="fuel in data.item.fuelTypeWithPrice" v-bind:key="fuel.fuelType">
+                    <b-list-group-item class="d-flex justify-content-between align-items-center">{{ fuel.fuelType }}
+                        <b-badge variant="primary" pill>{{ fuel.price}}</b-badge>
+                    </b-list-group-item>
+                </b-list-group>
+            </template> -->
+        <!-- </b-table> -->
+    </div>
+</template>
+
+<script src="./home.ts"></script>
